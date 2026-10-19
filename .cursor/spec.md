@@ -1,8 +1,8 @@
 # Ghar Bazaar Technical Specification
 
 Status: Draft architecture contract  
-Version: 1.0  
-Supports: `intent.md` v1.0
+Version: 1.1  
+Supports: `intent.md` v1.1
 
 ## 1. Architecture
 
@@ -28,30 +28,38 @@ The Android client is authoritative for presentation safety, local state, and de
 
 ## 2. Android modules
 
+The committed application id and namespace are `com.ashish.gharbazaar`. Gradle project names follow the module tree below. Kotlin packages live under `com.ashish.gharbazaar.<module>`.
+
 ```text
-com.gharbazaar
-├── app
-├── shell
-├── a2ui.catalog
-├── a2ui.runtime
-├── feature.onboarding
-├── feature.mealplan
-├── feature.grocery
-├── domain
-├── data.local
-├── data.remote
-├── sync
-└── localization
+:app
+:shell
+:a2ui-catalog
+:a2ui-runtime
+:feature-onboarding
+:feature-mealplan
+:feature-grocery
+:domain
+:data-local
+:data-remote
+:sync
+:localization
 ```
 
-Required Android dependencies are pinned in a version catalog:
+`:domain` is a plain Kotlin module and does not depend on Android or A2UI. `:app` depends on `:shell`. Feature modules do not depend on `:app`.
+
+Required Android dependencies are pinned in the version catalog at `1.0.0-alpha01` (A2UI Compose, 23 September 2026):
 
 ```kotlin
-implementation("androidx.a2ui:a2ui-model:<pinned-version>")
-implementation("androidx.a2ui.compose:compose-runtime:<pinned-version>")
-implementation("androidx.a2ui.compose:compose-ui:<pinned-version>")
-implementation("androidx.compose.material3:material3-a2ui:<pinned-version>")
+implementation("androidx.a2ui:a2ui-model:1.0.0-alpha01")
+implementation("androidx.a2ui:a2ui-engine:1.0.0-alpha01")
+implementation("androidx.a2ui.compose:compose-runtime:1.0.0-alpha01")
+implementation("androidx.a2ui.compose:compose-ui:1.0.0-alpha01")
+implementation("androidx.compose.material3:material3-a2ui:1.0.0-alpha01")
 ```
+
+Android modules compile against API 37.2 because A2UI `1.0.0-alpha01` requires compileSdk 37.1 or newer. `minSdk` stays 31.
+
+The Ghar Bazaar catalog id is `https://gharbazaar.app/a2ui/catalog/v1`. Transport messages use A2UI protocol `v0.9` and include a numeric `sequence` field. The client discards a message when its sequence is less than or equal to the last applied sequence for that surface. The official parser ignores unknown envelope fields, so `sequence` does not break protocol parsing.
 
 Reference: [Android Agentic UI in Jetpack Compose](https://developer.android.com/develop/ui/compose/agentic)
 
@@ -158,6 +166,8 @@ Supports: `FR-006`, `FR-007`
 
 DataStore stores language preference, feature flags, anonymous installation identity, and privacy preferences.
 
+The anonymous installation id is the MVP identity (FR-007). `AccountLink` is an adapter behind the same repository. It stays unavailable until an identity provider is configured, and it must not upload household data before the user opts in.
+
 ### DATA-003 Sync queue
 
 Supports: `FR-005`, `NFR-002`
@@ -182,6 +192,9 @@ validate_substitution()
 build_grocery_list()
 save_meal_plan()
 update_grocery_item()
+get_recipe_ingredients()
+adjust_recipe_to_nutrition_target()
+analyze_food_photo()
 ```
 
 Tools validate inputs and return structured domain objects. The agent cannot directly write Firestore or emit unapproved UI components.
@@ -197,6 +210,8 @@ Every mutation includes an authenticated user or installation identity and idemp
 Supports: `FR-009`, `NFR-007`
 
 The agent may call the typed tools `get_recipe_ingredients` and `adjust_recipe_to_nutrition_target`. The tools must normalize ingredients, servings, units, and nutrition assumptions before returning results. The backend must distinguish recipe-source values from calculated estimates.
+
+Nutrition numbers in the MVP come from the versioned dataset `gharbazaar-fixtures-2026.10` shipped with the service. Every `NutritionEstimate` records `sourceVersion`. Gemini may propose candidates when `GEMINI_API_KEY` is configured. Typed tools are the only writers of domain results. A missing key uses the fixture agent; contract tests do not call a live model.
 
 ### API-004 Food photo analysis
 
@@ -295,9 +310,9 @@ The client and backend emit privacy-safe correlation, latency, failure, synchron
 
 ## 12. Architecture decisions
 
-Detailed decisions are recorded in `../../../../Desktop/A2UI_prep/adr`:
+Binding decisions for this repository. External ADR drafts are not part of the repo, so these statements are the contract.
 
-- `ADR-001-a2ui-boundary.md`
-- `ADR-002-local-first-storage.md`
-- `ADR-003-agent-backend.md`
-- `ADR-004-mvp-commerce-boundary.md`
+- ADR-001. The Android client owns presentation safety, local state, permissions, and irreversible confirmation. A2UI is a projection of domain state. Unknown components and actions are rejected before UI state changes.
+- ADR-002. Room and DataStore hold the last successful plan and grocery list. Offline edits are queued with an idempotency key. The UI never shows a false success state.
+- ADR-003. The backend is a FastAPI service whose agent may call only the typed tools in API-001. Firestore and Gemini sit behind interfaces. Fixture adapters run in local and CI environments. Live adapters run only when deployment secrets are present.
+- ADR-004. The MVP does not perform retailer checkout, payment, or delivery. Commercial actions require native confirmation and stay disabled.

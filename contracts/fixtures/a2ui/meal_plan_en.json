@@ -1,0 +1,41 @@
+[
+  {
+    "version": "v0.9",
+    "sequence": 1,
+    "createSurface": {
+      "surfaceId": "meal-plan",
+      "catalogId": "https://gharbazaar.app/a2ui/catalog/v1"
+    }
+  },
+  {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {
+          "id": "root",
+          "component": "MealPlanHeader",
+          "title": "Weekly plan",
+          "dayCount": 7,
+          "children": ["budget", "meal-1"]
+        },
+        {
+          "id": "budget",
+          "component": "BudgetSummary",
+          "currency": "INR",
+          "estimatedInr": 2100,
+          "budgetInr": 2500
+        },
+        {
+          "id": "meal-1",
+          "component": "MealCard",
+          "mealName": "Moong khichdi",
+          "day": "Monday",
+          "slot": "lunch",
+          "costInr": 140
+        }
+      ]
+    }
+  }
+]

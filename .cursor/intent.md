@@ -1,8 +1,8 @@
 # Ghar Bazaar Product Intent
 
 Status: Draft product source of truth  
-Version: 1.0  
-Last updated: 2026-10-18
+Version: 1.1  
+Last updated: 2026-10-19
 
 ## 1. Product vision
 
@@ -132,6 +132,8 @@ The app supports localized UI and food content through language packs. English a
 
 The user can use the app anonymously and optionally upgrade to an account for backup and cross-device synchronization.
 
+The first release identity is an anonymous installation id stored on device. Account linking is an adapter that stays inactive until an identity provider is configured. Local household data is not uploaded before the user opts in.
+
 ### FR-008 Safe actions
 
 The app requires explicit native confirmation before future ordering, payment, account, or other irreversible actions.
@@ -147,6 +149,7 @@ Acceptance intent:
 - It shows the estimated protein per serving and the assumptions used.
 - It adjusts quantities or explains when the target cannot be met without changing the recipe materially.
 - It clearly labels nutrition values as estimates, not medical advice.
+- Estimates are calculated from a versioned nutrition dataset and identify that dataset version. They are not laboratory measurements.
 
 ### FR-010 Photo nutrition analysis
 

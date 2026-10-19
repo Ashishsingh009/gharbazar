@@ -1,0 +1,137 @@
+{
+  "sourceVersion": "gharbazaar-fixtures-2026.10",
+  "materialChangeFactor": 1.5,
+  "recipes": [
+    {
+      "id": "chicken-butter-masala",
+      "names": {"en": "Chicken butter masala", "hi": "चिकन बटर मसाला"},
+      "diet": "non_vegetarian",
+      "costPerServingInr": 95,
+      "baseServings": 1,
+      "allergens": ["dairy", "nuts"],
+      "ingredients": [
+        {"id": "chicken", "names": {"en": "Chicken", "hi": "चिकन"}, "quantity": 120, "unit": "g", "diet": "non_vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 31, "fiber_g": 0, "fat_g": 3.6, "carbohydrate_g": 0, "calories": 165}},
+        {"id": "butter", "names": {"en": "Butter", "hi": "मक्खन"}, "quantity": 15, "unit": "g", "diet": "vegetarian", "allergens": ["dairy"], "jainRestricted": false, "per100g": {"protein_g": 0.9, "fiber_g": 0, "fat_g": 81, "carbohydrate_g": 0.1, "calories": 717}},
+        {"id": "onion", "names": {"en": "Onion", "hi": "प्याज"}, "quantity": 40, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": true, "per100g": {"protein_g": 1.1, "fiber_g": 1.7, "fat_g": 0.1, "carbohydrate_g": 9.3, "calories": 40}},
+        {"id": "tomato", "names": {"en": "Tomato", "hi": "टमाटर"}, "quantity": 80, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 0.9, "fiber_g": 1.2, "fat_g": 0.2, "carbohydrate_g": 3.9, "calories": 18}},
+        {"id": "cream", "names": {"en": "Cream", "hi": "क्रीम"}, "quantity": 20, "unit": "g", "diet": "vegetarian", "allergens": ["dairy"], "jainRestricted": false, "per100g": {"protein_g": 2.1, "fiber_g": 0, "fat_g": 37, "carbohydrate_g": 2.8, "calories": 340}},
+        {"id": "garlic", "names": {"en": "Garlic", "hi": "लहसुन"}, "quantity": 5, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": true, "per100g": {"protein_g": 6.4, "fiber_g": 2.1, "fat_g": 0.5, "carbohydrate_g": 33, "calories": 149}},
+        {"id": "cashew", "names": {"en": "Cashew", "hi": "काजू"}, "quantity": 8, "unit": "g", "diet": "vegetarian", "allergens": ["nuts"], "jainRestricted": false, "per100g": {"protein_g": 18, "fiber_g": 3.3, "fat_g": 44, "carbohydrate_g": 30, "calories": 553}},
+        {"id": "garam-masala", "names": {"en": "Garam masala", "hi": "गरम मसाला"}, "quantity": 2, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 11, "fiber_g": 26, "fat_g": 14, "carbohydrate_g": 45, "calories": 350}}
+      ]
+    },
+    {
+      "id": "moong-khichdi",
+      "names": {"en": "Moong khichdi", "hi": "मूंग खिचड़ी"},
+      "diet": "vegetarian",
+      "costPerServingInr": 35,
+      "baseServings": 1,
+      "allergens": [],
+      "ingredients": [
+        {"id": "moong-dal", "names": {"en": "Moong dal", "hi": "मूंग दाल"}, "quantity": 40, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 24, "fiber_g": 8, "fat_g": 1.2, "carbohydrate_g": 59, "calories": 347}},
+        {"id": "rice", "names": {"en": "Rice", "hi": "चावल"}, "quantity": 50, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 7, "fiber_g": 1, "fat_g": 0.6, "carbohydrate_g": 78, "calories": 350}},
+        {"id": "ghee", "names": {"en": "Ghee", "hi": "घी"}, "quantity": 5, "unit": "g", "diet": "vegetarian", "allergens": ["dairy"], "jainRestricted": false, "per100g": {"protein_g": 0.3, "fiber_g": 0, "fat_g": 100, "carbohydrate_g": 0, "calories": 900}}
+      ]
+    },
+    {
+      "id": "palak-paneer",
+      "names": {"en": "Palak paneer", "hi": "पालक पनीर"},
+      "diet": "vegetarian",
+      "costPerServingInr": 55,
+      "baseServings": 1,
+      "allergens": ["dairy"],
+      "substitution": {"ingredientId": "paneer", "replacementId": "tofu", "replacementNames": {"en": "Tofu", "hi": "टोफू"}, "reason": {"en": "Lower cost and dairy-free", "hi": "कम कीमत और बिना डेयरी"}},
+      "ingredients": [
+        {"id": "spinach", "names": {"en": "Spinach", "hi": "पालक"}, "quantity": 80, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 2.9, "fiber_g": 2.2, "fat_g": 0.4, "carbohydrate_g": 3.6, "calories": 23}},
+        {"id": "paneer", "names": {"en": "Paneer", "hi": "पनीर"}, "quantity": 60, "unit": "g", "diet": "vegetarian", "allergens": ["dairy"], "jainRestricted": false, "per100g": {"protein_g": 18, "fiber_g": 0, "fat_g": 20, "carbohydrate_g": 1.2, "calories": 265}},
+        {"id": "onion", "names": {"en": "Onion", "hi": "प्याज"}, "quantity": 30, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": true, "per100g": {"protein_g": 1.1, "fiber_g": 1.7, "fat_g": 0.1, "carbohydrate_g": 9.3, "calories": 40}}
+      ]
+    },
+    {
+      "id": "tofu-palak",
+      "names": {"en": "Palak tofu", "hi": "पालक टोफू"},
+      "diet": "vegetarian",
+      "costPerServingInr": 45,
+      "baseServings": 1,
+      "allergens": [],
+      "ingredients": [
+        {"id": "spinach", "names": {"en": "Spinach", "hi": "पालक"}, "quantity": 80, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 2.9, "fiber_g": 2.2, "fat_g": 0.4, "carbohydrate_g": 3.6, "calories": 23}},
+        {"id": "tofu", "names": {"en": "Tofu", "hi": "टोफू"}, "quantity": 70, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 8, "fiber_g": 0.3, "fat_g": 4.8, "carbohydrate_g": 1.9, "calories": 76}}
+      ]
+    },
+    {
+      "id": "rajma",
+      "names": {"en": "Rajma", "hi": "राजमा"},
+      "diet": "vegetarian",
+      "costPerServingInr": 40,
+      "baseServings": 1,
+      "allergens": [],
+      "ingredients": [
+        {"id": "rajma", "names": {"en": "Kidney beans", "hi": "राजमा"}, "quantity": 60, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 24, "fiber_g": 15, "fat_g": 0.8, "carbohydrate_g": 60, "calories": 333}},
+        {"id": "tomato", "names": {"en": "Tomato", "hi": "टमाटर"}, "quantity": 50, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 0.9, "fiber_g": 1.2, "fat_g": 0.2, "carbohydrate_g": 3.9, "calories": 18}}
+      ]
+    },
+    {
+      "id": "curd-rice",
+      "names": {"en": "Curd rice", "hi": "दही चावल"},
+      "diet": "vegetarian",
+      "costPerServingInr": 30,
+      "baseServings": 1,
+      "allergens": ["dairy"],
+      "ingredients": [
+        {"id": "rice", "names": {"en": "Rice", "hi": "चावल"}, "quantity": 70, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 7, "fiber_g": 1, "fat_g": 0.6, "carbohydrate_g": 78, "calories": 350}},
+        {"id": "curd", "names": {"en": "Curd", "hi": "दही"}, "quantity": 80, "unit": "g", "diet": "vegetarian", "allergens": ["dairy"], "jainRestricted": false, "per100g": {"protein_g": 3.5, "fiber_g": 0, "fat_g": 4, "carbohydrate_g": 4.7, "calories": 98}}
+      ]
+    },
+    {
+      "id": "veg-pulao",
+      "names": {"en": "Vegetable pulao", "hi": "वेजिटेबल पुलाव"},
+      "diet": "vegetarian",
+      "costPerServingInr": 38,
+      "baseServings": 1,
+      "allergens": [],
+      "ingredients": [
+        {"id": "rice", "names": {"en": "Rice", "hi": "चावल"}, "quantity": 60, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 7, "fiber_g": 1, "fat_g": 0.6, "carbohydrate_g": 78, "calories": 350}},
+        {"id": "peas", "names": {"en": "Peas", "hi": "मटर"}, "quantity": 30, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 5.4, "fiber_g": 5.7, "fat_g": 0.4, "carbohydrate_g": 14, "calories": 81}},
+        {"id": "carrot", "names": {"en": "Carrot", "hi": "गाजर"}, "quantity": 20, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": true, "per100g": {"protein_g": 0.9, "fiber_g": 2.8, "fat_g": 0.2, "carbohydrate_g": 10, "calories": 41}}
+      ]
+    },
+    {
+      "id": "chole",
+      "names": {"en": "Chole", "hi": "छोले"},
+      "diet": "vegetarian",
+      "costPerServingInr": 36,
+      "baseServings": 1,
+      "allergens": [],
+      "ingredients": [
+        {"id": "chickpea", "names": {"en": "Chickpeas", "hi": "छोले"}, "quantity": 60, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 19, "fiber_g": 17, "fat_g": 6, "carbohydrate_g": 61, "calories": 364}},
+        {"id": "tomato", "names": {"en": "Tomato", "hi": "टमाटर"}, "quantity": 40, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 0.9, "fiber_g": 1.2, "fat_g": 0.2, "carbohydrate_g": 3.9, "calories": 18}}
+      ]
+    },
+    {
+      "id": "egg-bhurji",
+      "names": {"en": "Egg bhurji", "hi": "अंडा भुर्जी"},
+      "diet": "eggetarian",
+      "costPerServingInr": 32,
+      "baseServings": 1,
+      "allergens": ["egg"],
+      "ingredients": [
+        {"id": "egg", "names": {"en": "Egg", "hi": "अंडा"}, "quantity": 100, "unit": "g", "diet": "eggetarian", "allergens": ["egg"], "jainRestricted": false, "per100g": {"protein_g": 13, "fiber_g": 0, "fat_g": 11, "carbohydrate_g": 1.1, "calories": 155}},
+        {"id": "onion", "names": {"en": "Onion", "hi": "प्याज"}, "quantity": 20, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": true, "per100g": {"protein_g": 1.1, "fiber_g": 1.7, "fat_g": 0.1, "carbohydrate_g": 9.3, "calories": 40}}
+      ]
+    },
+    {
+      "id": "jain-khichdi",
+      "names": {"en": "Jain khichdi", "hi": "जैन खिचड़ी"},
+      "diet": "vegetarian",
+      "costPerServingInr": 34,
+      "baseServings": 1,
+      "allergens": [],
+      "jain": true,
+      "ingredients": [
+        {"id": "moong-dal", "names": {"en": "Moong dal", "hi": "मूंग दाल"}, "quantity": 40, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 24, "fiber_g": 8, "fat_g": 1.2, "carbohydrate_g": 59, "calories": 347}},
+        {"id": "rice", "names": {"en": "Rice", "hi": "चावल"}, "quantity": 50, "unit": "g", "diet": "vegetarian", "allergens": [], "jainRestricted": false, "per100g": {"protein_g": 7, "fiber_g": 1, "fat_g": 0.6, "carbohydrate_g": 78, "calories": 350}}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Markdown and ID lint
+        run: python3 tools/traceability.py
+      - name: JSON and schema validation
+        run: python3 tools/traceability.py
+      - name: Security scan
+        run: python3 tools/secret_scan.py
+      - name: Backend and API contract tests
+        run: |
+          python3 -m pip install -r backend/requirements.txt
+          python3 -m pytest backend/tests
+      - name: Smoke test
+        run: PYTHONPATH=backend python3 -c "from fastapi.testclient import TestClient; from gharbazaar.api import app; assert TestClient(app).get('/health').status_code == 200"
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Android SDK
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          mkdir -p "$HOME/android-sdk/cmdline-tools"
+          wget -q -O /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip
+          unzip -q /tmp/cmdtools.zip -d "$HOME/android-sdk/cmdline-tools"
+          mv "$HOME/android-sdk/cmdline-tools/cmdline-tools" "$HOME/android-sdk/cmdline-tools/latest"
+          yes | "$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$HOME/android-sdk" --licenses >/dev/null
+          "$HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$HOME/android-sdk" "platforms;android-37.2" "build-tools;37.0.0" "platform-tools"
+          echo "sdk.dir=$HOME/android-sdk" > local.properties
+      - name: Android unit tests and debug artifact
+        run: ./gradlew :domain:test :app:assembleDebug --console=plain

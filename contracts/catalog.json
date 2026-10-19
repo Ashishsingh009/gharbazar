@@ -1,0 +1,70 @@
+{
+  "catalogId": "https://gharbazaar.app/a2ui/catalog/v1",
+  "protocolVersion": "v0.9",
+  "sourceVersion": "gharbazaar-fixtures-2026.10",
+  "components": {
+    "HouseholdSummary": {
+      "required": ["householdName", "memberCount", "region"],
+      "optional": ["children"]
+    },
+    "MealPlanHeader": {
+      "required": ["title", "dayCount"],
+      "optional": ["children", "note"]
+    },
+    "BudgetSummary": {
+      "required": ["currency", "estimatedInr", "budgetInr"],
+      "optional": []
+    },
+    "MealCard": {
+      "required": ["mealName", "day", "slot"],
+      "optional": ["costInr", "action"]
+    },
+    "IngredientSwapRow": {
+      "required": ["original", "replacement"],
+      "optional": ["reason", "acceptAction", "rejectAction"]
+    },
+    "GroceryListSummary": {
+      "required": ["title", "itemCount"],
+      "optional": ["children"]
+    },
+    "PreferenceSelector": {
+      "required": ["label", "value"],
+      "optional": ["action"]
+    },
+    "AgentStatusMessage": {
+      "required": ["message"],
+      "optional": ["tone"]
+    },
+    "RecipeIngredientList": {
+      "required": ["recipeName", "servings", "disclaimer"],
+      "optional": ["children"]
+    },
+    "NutritionTargetSummary": {
+      "required": ["proteinGrams", "targetGrams", "assumptions"],
+      "optional": ["differenceGrams"]
+    },
+    "PhotoNutritionSummary": {
+      "required": ["confidence", "assumptions"],
+      "optional": ["confirmed", "action"]
+    },
+    "MacroBreakdown": {
+      "required": ["proteinGrams", "fiberGrams", "fatGrams", "carbohydrateGrams", "calories"],
+      "optional": []
+    }
+  },
+  "actions": [
+    "edit_household_preferences",
+    "select_meal",
+    "accept_substitution",
+    "reject_substitution",
+    "build_grocery_list",
+    "edit_grocery_item",
+    "regenerate_meal_plan",
+    "save_meal_plan",
+    "get_recipe_ingredients",
+    "adjust_recipe_to_nutrition_target",
+    "analyze_food_photo",
+    "confirm_photo_analysis"
+  ],
+  "commercialActions": ["place_order", "pay", "delete_account"]
+}

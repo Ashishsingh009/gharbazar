@@ -1,0 +1,38 @@
+{
+  "sourceVersion": "gharbazaar-fixtures-2026.10",
+  "images": {
+    "fixture:thali": {
+      "sufficientEvidence": true,
+      "confidence": "medium",
+      "foods": [
+        {
+          "id": "dal",
+          "names": {"en": "Dal", "hi": "दाल"},
+          "portion": {"en": "1 katori", "hi": "1 कटोरी"},
+          "estimatedGrams": 180,
+          "per100g": {"protein_g": 7, "fiber_g": 5, "fat_g": 3, "carbohydrate_g": 18, "calories": 120}
+        },
+        {
+          "id": "rice",
+          "names": {"en": "Rice", "hi": "चावल"},
+          "portion": {"en": "1 serving", "hi": "1 सर्विंग"},
+          "estimatedGrams": 150,
+          "per100g": {"protein_g": 2.7, "fiber_g": 0.4, "fat_g": 0.3, "carbohydrate_g": 28, "calories": 130}
+        }
+      ]
+    },
+    "fixture:ambiguous": {
+      "sufficientEvidence": false,
+      "confidence": "low",
+      "foods": [
+        {
+          "id": "mixed-plate",
+          "names": {"en": "Mixed plate", "hi": "मिश्रित थाली"},
+          "portion": {"en": "uncertain portion", "hi": "अनिश्चित मात्रा"},
+          "estimatedGrams": null,
+          "per100g": {"protein_g": 0, "fiber_g": 0, "fat_g": 0, "carbohydrate_g": 0, "calories": 0}
+        }
+      ]
+    }
+  }
+}

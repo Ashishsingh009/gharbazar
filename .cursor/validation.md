@@ -6,24 +6,24 @@ Status values: `Not started`, `In progress`, `Validated`, `Partially validated`,
 
 | Requirement | Specification | Implementation | Validation | Status |
 |---|---|---|---|---|
-| FR-001 | A2UI-001, API-001 | TASK-006, TASK-009 | TEST-001, TEST-002 | Not started |
-| FR-002 | DATA-001 | TASK-005 | TEST-003 | Not started |
-| FR-003 | A2UI-001, API-001 | TASK-006, TASK-009 | TEST-004 | Not started |
-| FR-004 | A2UI-001, API-001 | TASK-007, TASK-009 | TEST-005 | Not started |
-| FR-005 | DATA-003 | TASK-004, TASK-011 | TEST-006 | Not started |
-| FR-006 | Localization | TASK-005, TASK-012 | TEST-007 | Not started |
-| FR-007 | DATA-002 | TASK-005 | TEST-008 | Not started |
-| FR-008 | A2UI-003, API-002 | TASK-013 | TEST-009 | Not started |
-| FR-009 | A2UI-004, API-003 | TASK-015 | TEST-015, TEST-016 | Not started |
-| FR-010 | A2UI-005, API-004 | TASK-016 | TEST-019, TEST-020, TEST-021 | Not started |
-| NFR-001 | A2UI-001 | TASK-001, TASK-002 | TEST-010 | Not started |
-| NFR-002 | DATA-003 | TASK-011 | TEST-006 | Not started |
-| NFR-003 | SEC-001 | TASK-002, TASK-013 | TEST-011 | Not started |
-| NFR-004 | SEC-002 | TASK-013 | TEST-012 | Not started |
-| NFR-005 | Localization | TASK-012 | TEST-013 | Not started |
-| NFR-006 | API-001 | TASK-008, TASK-013 | TEST-014 | Not started |
-| NFR-007 | A2UI-004, API-003, NUT-001 | TASK-015 | TEST-016, TEST-017 | Not started |
-| NFR-008 | A2UI-005, API-004, NUT-002 | TASK-016 | TEST-021, TEST-022 | Not started |
+| FR-001 | A2UI-001, API-001 | TASK-006, TASK-009 | TEST-001, TEST-002 | Validated |
+| FR-002 | DATA-001 | TASK-005 | TEST-003 | Partially validated |
+| FR-003 | A2UI-001, API-001 | TASK-006, TASK-009 | TEST-004 | Validated |
+| FR-004 | A2UI-001, API-001 | TASK-007, TASK-009 | TEST-005 | Validated |
+| FR-005 | DATA-003 | TASK-004, TASK-011 | TEST-006 | Validated |
+| FR-006 | Localization | TASK-005, TASK-012 | TEST-007 | Validated |
+| FR-007 | DATA-002 | TASK-005 | TEST-008 | Partially validated |
+| FR-008 | A2UI-003, API-002 | TASK-013 | TEST-009 | Validated |
+| FR-009 | A2UI-004, API-003 | TASK-015 | TEST-015, TEST-016, TEST-017, TEST-018 | Validated |
+| FR-010 | A2UI-005, API-004 | TASK-016 | TEST-019, TEST-020, TEST-021 | Validated |
+| NFR-001 | A2UI-001 | TASK-001, TASK-002 | TEST-010 | Partially validated |
+| NFR-002 | DATA-003 | TASK-011 | TEST-006 | Validated |
+| NFR-003 | SEC-001 | TASK-002, TASK-013 | TEST-011 | Validated |
+| NFR-004 | SEC-002 | TASK-013 | TEST-012 | Validated |
+| NFR-005 | Localization | TASK-012 | TEST-013 | Partially validated |
+| NFR-006 | API-001 | TASK-008, TASK-013 | TEST-014 | Partially validated |
+| NFR-007 | A2UI-004, API-003, NUT-001 | TASK-015 | TEST-016, TEST-017 | Validated |
+| NFR-008 | A2UI-005, API-004, NUT-002 | TASK-016 | TEST-021, TEST-022 | Validated |
 
 ## 2. Test cases
 
@@ -172,3 +172,20 @@ Verify that images require user authorization, are not written to ordinary logs 
 ## 4. Completion rule
 
 A requirement is `Validated` only when its mapped test passes and evidence is linked from CI or a review artifact. A requirement without a validation mapping blocks release.
+
+## 5. Evidence for this revision
+
+Passed locally and wired into `.github/workflows/ci.yml`:
+
+- `./gradlew :domain:test` covers TEST-001 through TEST-022 in `domain/src/test/kotlin/com/ashish/gharbazaar/domain/DomainTest.kt`.
+- `python3 -m pytest backend/tests` covers the same meal, recipe, photo, idempotency, catalog, and redaction rules on the FastAPI service.
+- `./gradlew :app:assembleDebug` produces the debug Android artifact and compiles the A2UI catalog.
+- `python3 tools/traceability.py` and `python3 tools/secret_scan.py` cover REL-001 and the secret scan.
+
+Partial rows:
+
+- FR-002 restores a household through `MemoryHouseholdStore`. Room stores the same JSON and compiles, and an instrumented process-death run has not been executed here.
+- FR-007 keeps local data and refuses account linking until an identity provider exists.
+- NFR-001 fixture acceptance passes. An emulator has not rendered the Compose surface.
+- NFR-005 checks shared accessibility strings and the 48dp minimum. A screen-reader pass has not been executed.
+- NFR-006 records in-process latency and rejection metrics. A hosted crash dashboard is still open under REL-006.
