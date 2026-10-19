@@ -23,4 +23,17 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Ghar Bazaar"
-include(":app")
+include(
+    ":app",
+    ":domain",
+    ":shell",
+    ":a2ui-catalog",
+    ":a2ui-runtime",
+    ":feature-onboarding",
+    ":feature-mealplan",
+    ":feature-grocery",
+    ":data-local",
+    ":data-remote",
+    ":sync",
+    ":localization",
+)

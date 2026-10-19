@@ -1,0 +1,60 @@
+{
+  "unknownComponent": {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {"id": "root", "component": "MysteryWidget", "title": "no"}
+      ]
+    }
+  },
+  "unknownProperty": {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {"id": "root", "component": "MealPlanHeader", "title": "Plan", "dayCount": 7, "sponsored": true}
+      ]
+    }
+  },
+  "invalidBinding": {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {"id": "root", "component": "MealPlanHeader", "title": {"path": "/title"}, "dayCount": 7}
+      ]
+    }
+  },
+  "unsupportedCatalog": {
+    "version": "v0.9",
+    "sequence": 1,
+    "createSurface": {
+      "surfaceId": "meal-plan",
+      "catalogId": "https://example.invalid/catalog/v9"
+    }
+  },
+  "duplicateIds": {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {"id": "root", "component": "MealPlanHeader", "title": "A", "dayCount": 7},
+        {"id": "root", "component": "MealPlanHeader", "title": "B", "dayCount": 7}
+      ]
+    }
+  },
+  "malformed": "{",
+  "stale": {
+    "version": "v0.9",
+    "sequence": 1,
+    "createSurface": {
+      "surfaceId": "meal-plan",
+      "catalogId": "https://gharbazaar.app/a2ui/catalog/v1"
+    }
+  }
+}

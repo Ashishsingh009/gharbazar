@@ -1,7 +1,7 @@
 # Ghar Bazaar Shipping Contract
 
 Status: Draft release and CI/CD contract  
-Version: 1.0
+Version: 1.1
 
 ## 1. Branching and pull requests
 
@@ -31,7 +31,7 @@ Markdown and ID lint
 
 ### REL-001 Traceability
 
-Every `FR-*`, `NFR-*`, and `A2UI-*` requirement has a specification, implementation task, and validation reference.
+Every `FR-*`, `NFR-*`, and `A2UI-*` requirement has a specification, implementation task, and validation reference. `tools/traceability.py` enforces this check, and `.github/workflows/ci.yml` runs it before tests.
 
 ### REL-002 Contract validity
 
@@ -85,7 +85,18 @@ Rollback must support:
 - Replaying or safely abandoning failed synchronization operations.
 - Preserving user-created local grocery data.
 
-## 7. Release checklist
+## 7. Current automated evidence
+
+`/.github/workflows/ci.yml` runs traceability, the secret scan, backend contract tests, the health smoke check, `:domain:test`, and `:app:assembleDebug`.
+
+Still open before a production rollout:
+
+- REL-004 signed release artifact.
+- REL-005 Cloud Run deploy. The service is fixture-tested locally. Gemini and Firestore stay behind `GEMINI_API_KEY` and `FIRESTORE_PROJECT`.
+- REL-006 vendor crash-reporting dashboards. The client records privacy-safe in-process metrics.
+- Account linking stays on `UnconfiguredAccountLink` until an identity provider is chosen.
+
+## 8. Release checklist
 
 - [ ] All changed requirements are identified.
 - [ ] `intent.md` and `spec.md` are synchronized.

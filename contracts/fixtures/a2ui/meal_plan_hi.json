@@ -1,0 +1,34 @@
+[
+  {
+    "version": "v0.9",
+    "sequence": 1,
+    "createSurface": {
+      "surfaceId": "meal-plan",
+      "catalogId": "https://gharbazaar.app/a2ui/catalog/v1"
+    }
+  },
+  {
+    "version": "v0.9",
+    "sequence": 2,
+    "updateComponents": {
+      "surfaceId": "meal-plan",
+      "components": [
+        {
+          "id": "root",
+          "component": "MealPlanHeader",
+          "title": "साप्ताहिक योजना",
+          "dayCount": 7,
+          "children": ["meal-1"]
+        },
+        {
+          "id": "meal-1",
+          "component": "MealCard",
+          "mealName": "मूंग खिचड़ी",
+          "day": "सोमवार",
+          "slot": "दोपहर का भोजन",
+          "costInr": 140
+        }
+      ]
+    }
+  }
+]
